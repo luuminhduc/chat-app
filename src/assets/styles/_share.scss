@@ -1,0 +1,29 @@
+.container_wrap {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $light-color;
+  .container {
+    // background-color: $white;
+  }
+  &.dark {
+    background-color: $dark-color;
+    .container {
+      background-color: lighten($color: $dark-color, $amount: 5%);
+    }
+  }
+}
+
+.container {
+  @include xs {
+    margin: auto;
+    width: 95%;
+    border-radius: 5px;
+    min-height: 300px;
+  }
+  @include md {
+    width: 60%;
+    min-height: 70vh;
+  }
+}

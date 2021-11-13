@@ -1,2 +1,68 @@
 .account {
+  @include xs {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $text-light-theme;
+    font-size: $text-md;
+    &_switch {
+      margin-bottom: 20px;
+    }
+    &_content {
+      background-color: $white;
+      width: 95%;
+      margin: auto;
+      border-radius: 5px;
+      text-align: center;
+      padding: 25px 25px;
+
+      h1 {
+        margin-bottom: 20px;
+        font-size: $text-2xl;
+      }
+      .form_control {
+        text-align: left;
+        margin-bottom: 20px;
+        width: 100%;
+        input {
+          width: 100%;
+          padding: 15px;
+          border-radius: 50px;
+          border: 1px solid darken($color: $light-color, $amount: 10%);
+          font-size: $text-sm;
+          &.error {
+            border-color: $red-color;
+          }
+          &:focus {
+            outline: none;
+            border-color: $primary-color;
+          }
+        }
+        small {
+          color: $red-color;
+          font-weight: 600;
+        }
+      }
+      button {
+        @include btn;
+        background-color: $primary-color;
+        width: 100%;
+        padding: 15px;
+        border-radius: 50px;
+        font-size: $text-md;
+      }
+    }
+  }
+  @include md {
+    &_content {
+      width: 50%;
+    }
+  }
+  @include lg {
+    &_content {
+      width: 35%;
+    }
+  }
 }
