@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Provider, useSelector } from 'react-redux';
+import { isLoaded, ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import store from './redux/store';
+import config from "./firebase/config";
+import firebase from 'firebase';
+import { BrowserRouter,Routes,Route,Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+const App = () => {
 
-function App() {
+  const rrf = {
+    config,
+    firebase,
+    dispatch:store.dispatch
+  }
+
+  const AuthIsLoaded = ({children}) => {
+    const auth = useSelector(state=>state.firebaseReducer.auth);
+    if(!isLoaded(auth)) return "";
+    return children
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <ReactReduxFirebaseProvider {...rrf}>
+        <AuthIsLoaded>
+          <BrowserRouter>
+            <Routes>
+               <Route path="/home" element={<Home/>}/>
+               <Route path="/" element={<Navigate replace to="/home"/>}/>
+            </Routes>
+          </BrowserRouter>
+        </AuthIsLoaded>
+      </ReactReduxFirebaseProvider>
+    </Provider>
   );
 }
-
+ 
 export default App;
