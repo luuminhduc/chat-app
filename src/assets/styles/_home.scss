@@ -1,0 +1,45 @@
+.home {
+  @include xs {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $light-color;
+    transition: all 0.2s linear;
+    .app {
+      background-color: $white;
+    }
+    &.dark {
+      background-color: $dark-color;
+      color: $text-dark-theme;
+      .app {
+        background-color: lighten($color: $dark-color, $amount: 5%);
+      }
+    }
+  }
+  @include md {
+  }
+}
+
+.app {
+  @include xs {
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%;
+    margin: auto;
+  }
+
+  @include md {
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(1fr, 12);
+    grid-gap: 20px;
+    &_content {
+      grid-column: 2 / 12;
+    }
+  }
+
+  @include lg {
+    width: 60%;
+  }
+}
