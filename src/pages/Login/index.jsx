@@ -1,15 +1,28 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { loginRequest } from "../../redux/actions/loginAction/actions";
 const Login = () => {
+  // Get function from react-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const dispatch = useDispatch();
+
+  // Get state from loginReducer;
+  const { loginError } = useSelector((state) => state.loginReducer);
+
+  const navigate = useNavigate();
+
+  // Submit form
   const submit = (data) => {
-    console.log(data);
+    dispatch(loginRequest(data, navigate));
   };
 
   return (
@@ -41,6 +54,11 @@ const Login = () => {
               <span>Register</span>
             </Link>
           </p>
+          {loginError && (
+            <div className="account_error">
+              <p>{loginError}</p>
+            </div>
+          )}
           <button type="submit">Login</button>
         </form>
       </div>

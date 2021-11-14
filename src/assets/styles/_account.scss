@@ -9,6 +9,16 @@
     font-size: $text-md;
     &_switch {
       margin-bottom: 20px;
+      font-size: $text-sm;
+    }
+    &_error {
+      margin-bottom: 20px;
+      color: $white;
+      padding: 25px;
+      border-radius: 50px;
+      background-color: $red-color;
+      font-size: $text-sm;
+      text-align: left;
     }
     &_content {
       background-color: $white;
