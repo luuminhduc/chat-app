@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
-import { loginRequest, logout } from "../../redux/actions/loginAction/actions";
-const Login = () => {
+import { registerRequest } from "../../redux/actions/registerAction/actions";
+const Register = () => {
   // Get function from react-hook-form
   const {
     register,
@@ -18,25 +18,33 @@ const Login = () => {
   const { auth } = useSelector((state) => state.firebaseReducer);
 
   // Get state from loginReducer;
-  const { loginError } = useSelector((state) => state.loginReducer);
+  const { registerError } = useSelector((state) => state.registerReducer);
 
   const navigate = useNavigate();
 
   // Submit form
   const submit = (data) => {
-    dispatch(loginRequest(data, navigate));
+    dispatch(registerRequest(data, navigate));
   };
 
   return (
     <div className="account">
       <div className="account_content">
         {auth.uid ? (
-          <button onClick={() => dispatch(logout())}>Logout</button>
+          <button>Logout</button>
         ) : (
           <React.Fragment>
-            {" "}
-            <h1>Login</h1>
+            <h1>Register</h1>
             <form onSubmit={handleSubmit((data) => submit(data))}>
+              <div className="form_control">
+                <input
+                  className={`${errors.username && "error"}`}
+                  {...register("username", { required: true })}
+                  type="text"
+                  placeholder="Username"
+                />
+                {errors.username && <small>Username can not be blank</small>}
+              </div>
               <div className="form_control">
                 <input
                   className={`${errors.email && "error"}`}
@@ -56,17 +64,17 @@ const Login = () => {
                 {errors.password && <small>Password can not be blank</small>}
               </div>
               <p className="account_switch">
-                Do not have an account yet?{" "}
-                <Link to="/register">
-                  <span>Register</span>
+                Already have an account?{" "}
+                <Link to="/login">
+                  <span>Login</span>
                 </Link>
               </p>
-              {loginError && (
+              {registerError && (
                 <div className="account_error">
-                  <p>{loginError}</p>
+                  <p>{registerError}</p>
                 </div>
               )}
-              <button type="submit">Login</button>
+              <button type="submit">Register</button>
             </form>
           </React.Fragment>
         )}
@@ -75,4 +83,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

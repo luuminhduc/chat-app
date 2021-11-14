@@ -7,6 +7,7 @@ import firebase from 'firebase';
 import { BrowserRouter,Routes,Route,Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Register from './pages/Register';
 const App = () => {
 
   const rrf = {
@@ -30,6 +31,7 @@ const App = () => {
                <Route path="/home" element={<Home/>}/>
                <Route path="/" element={<Navigate replace to="/home"/>}/>
                <Route path="/login" element={<Login/>}/>
+               <Route path="/register" element={<Register/>}/>
             </Routes>
           </BrowserRouter>
         </AuthIsLoaded>

@@ -25,3 +25,11 @@ export const hideLoginError = () => {
 
     }
 }
+
+export const logout = () => (dispatch,getState,{getFirebase}) => {
+    const firebase = getFirebase()
+    firebase.auth().signOut()
+    .catch(err => {
+        console.log(err);
+    })
+}
