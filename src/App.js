@@ -10,7 +10,6 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Wrap from './components/Wrapper';
 import Profile from './pages/Profile';
-import Users from './pages/Users';
 import Chat from './pages/Chat';
 const App = () => {
 
