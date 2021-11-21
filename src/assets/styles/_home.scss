@@ -4,7 +4,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $light-color;
+    // background-color: $light-color;
+    background-color: red;
+    color: blue;
     transition: all 0.2s linear;
     .app {
       background-color: $white;
