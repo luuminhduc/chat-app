@@ -17,7 +17,6 @@ const Chat = () => {
     <div className="chat">
       <div className="chat_header">
         <h3>Header</h3>
-        <p>Ngu</p>
       </div>
       <div ref={chatContainer} className="chat_container">
         {arr.map((el) => (
