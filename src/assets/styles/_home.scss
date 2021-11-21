@@ -1,4 +1,4 @@
-.home {
+.wrap {
   @include xs {
     height: 100vh;
     display: flex;
@@ -8,12 +8,19 @@
     transition: all 0.2s linear;
     .app {
       background-color: $white;
+
+      .navigation_bar {
+        background-color: darken($color: $light-color, $amount: 3%);
+      }
     }
     &.dark {
       background-color: $dark-color;
       color: $text-dark-theme;
       .app {
         background-color: lighten($color: $dark-color, $amount: 5%);
+        .navigation_bar {
+          background-color: $dark-color;
+        }
       }
     }
   }
@@ -27,6 +34,15 @@
     border-radius: 10px;
     width: 95%;
     margin: auto;
+    box-shadow: $shadow;
+    height: 90vh;
+    max-height: 90vh;
+    overflow: hidden;
+    position: relative;
+    .app_content {
+      height: 100%;
+      padding-bottom: 40px;
+    }
   }
 
   @include md {
@@ -34,6 +50,7 @@
     display: grid;
     grid-template-columns: repeat(1fr, 12);
     grid-gap: 20px;
+    position: static;
     &_content {
       grid-column: 2 / 12;
     }

@@ -1,0 +1,16 @@
+.chat {
+  @include xs {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    &_container {
+      max-height: 400px;
+      height: 400px;
+      overflow-y: scroll;
+      width: 100%;
+      padding: 30px;
+    }
+  }
+}
