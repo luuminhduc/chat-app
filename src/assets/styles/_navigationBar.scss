@@ -1,7 +1,43 @@
 .navigation_bar {
   @include xs {
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    &.dark {
+      .icon {
+        color: $text-dark-theme;
+      }
+    }
+    .icon {
+      color: $text-light-theme;
+      font-size: $text-md;
+      height: 35px;
+      width: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      &.active {
+        background-color: $primary-color;
+        color: $white;
+      }
+    }
   }
   @include md {
     position: static;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .icon {
+      margin-bottom: 20px;
+    }
   }
 }
